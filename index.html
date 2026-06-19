@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rhapsody of Realities — Redesign Concept</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/2.44.0/tabler-icons.min.css">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#FFFFFF}
+:root{
+  --ink:#111210;
+  --ink-2:#3A3A36;
+  --ink-3:#7A7A72;
+  --gold:#B8962E;
+  --gold-pale:#F5EDD6;
+  --gold-border:#E2C97E;
+  --rule:#E8E6E0;
+  --surf:#F8F7F4;
+  --white:#FFFFFF;
+  --green:#2E6B44;
+  --green-pale:#EAF3ED;
+}
+body{font-family:'DM Sans',sans-serif;color:var(--ink);background:var(--white)}
+.site{max-width:1200px;margin:0 auto;overflow:hidden}
+a{cursor:pointer}
+
+/* NAV */
+.nav{display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:76px;background:var(--white);border-bottom:0.5px solid var(--rule);position:sticky;top:0;z-index:10}
+.nav-logo{font-family:'DM Serif Display',serif;font-size:20px;color:var(--ink);letter-spacing:-0.01em;line-height:1}
+.nav-logo small{display:block;font-family:'DM Sans',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-3);margin-top:3px}
+.nav-links{display:flex;gap:34px;list-style:none}
+.nav-links a{font-size:13px;font-weight:500;color:var(--ink-2);text-decoration:none;letter-spacing:0.01em}
+.nav-links a:hover{color:var(--gold)}
+.nav-pill{background:var(--ink);color:var(--white);font-size:12px;font-weight:600;letter-spacing:0.08em;padding:11px 22px;border-radius:3px;text-decoration:none;transition:opacity .2s}
+.nav-pill:hover{opacity:0.85}
+
+/* HERO */
+.hero{background:var(--surf);padding:90px 48px 80px;display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:center;border-bottom:0.5px solid var(--rule)}
+.hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+.hero-h1{font-family:'DM Serif Display',serif;font-size:58px;line-height:1.12;color:var(--ink);margin-bottom:24px;letter-spacing:-0.02em}
+.hero-h1 em{font-style:italic;color:var(--gold)}
+.hero-body{font-size:17px;color:var(--ink-3);line-height:1.75;margin-bottom:36px;font-weight:300;max-width:480px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.btn-dark{background:var(--ink);color:var(--white);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:15px 26px;border-radius:3px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:opacity .2s}
+.btn-dark:hover{opacity:0.85}
+.btn-ghost{border:0.5px solid var(--ink-2);color:var(--ink-2);font-size:12px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;padding:14px 24px;border-radius:3px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:background .2s}
+.btn-ghost:hover{background:rgba(0,0,0,0.04)}
+
+.devo-preview{background:var(--white);border:0.5px solid var(--rule);border-radius:8px;overflow:hidden;box-shadow:0 24px 48px -16px rgba(17,18,16,0.08)}
+.devo-preview-top{background:var(--gold-pale);border-bottom:0.5px solid var(--gold-border);padding:18px 24px;display:flex;align-items:center;justify-content:space-between}
+.devo-tag{font-size:10px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold)}
+.devo-date-badge{font-size:12px;color:var(--ink-3);font-weight:400}
+.devo-body{padding:28px 26px}
+.devo-title-sm{font-family:'DM Serif Display',serif;font-size:22px;color:var(--ink);margin-bottom:14px;line-height:1.35}
+.devo-verse-sm{font-size:14px;font-style:italic;color:var(--ink-3);line-height:1.65;border-left:2px solid var(--gold-border);padding-left:14px;margin-bottom:16px;font-family:'DM Serif Display',serif}
+.devo-text-sm{font-size:14px;color:var(--ink-2);line-height:1.75;margin-bottom:20px}
+.devo-read{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink);text-decoration:none;display:inline-flex;align-items:center;gap:6px;border-bottom:1.5px solid var(--gold);padding-bottom:2px}
+
+/* STATS */
+.stats-bar{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:0.5px solid var(--rule);max-width:1200px;margin:0 auto}
+.stat-cell{padding:36px 24px;text-align:center;border-right:0.5px solid var(--rule)}
+.stat-cell:last-child{border-right:none}
+.stat-n{font-family:'DM Serif Display',serif;font-size:38px;color:var(--ink);display:block;line-height:1}
+.stat-l{font-size:11px;color:var(--ink-3);letter-spacing:0.12em;text-transform:uppercase;font-weight:400;display:block;margin-top:8px}
+
+/* DIVIDER */
+.section-divider{display:flex;align-items:center;gap:18px;padding:56px 48px 0;max-width:1200px;margin:0 auto}
+.div-line{flex:1;height:0.5px;background:var(--rule)}
+.div-label{font-size:10px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink-3);white-space:nowrap}
+
+/* DEVOTIONAL FULL */
+.devo-section{padding:32px 48px 64px;max-width:1200px;margin:0 auto}
+.devo-section-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:32px}
+.section-h2{font-family:'DM Serif Display',serif;font-size:36px;color:var(--ink);line-height:1.2;letter-spacing:-0.01em}
+.see-all{font-size:13px;font-weight:500;color:var(--gold);text-decoration:none;display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.devo-card-full{background:var(--white);border:0.5px solid var(--rule);border-radius:8px;display:grid;grid-template-columns:4px 1fr;overflow:hidden}
+.devo-spine{background:var(--gold)}
+.devo-inner{padding:40px 44px}
+.devo-meta{font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:14px}
+.devo-h{font-family:'DM Serif Display',serif;font-size:30px;color:var(--ink);margin-bottom:20px;line-height:1.3}
+.devo-scripture{font-family:'DM Serif Display',serif;font-style:italic;font-size:18px;color:var(--ink-2);background:var(--gold-pale);border-left:3px solid var(--gold-border);padding:18px 22px;border-radius:0 6px 6px 0;margin-bottom:22px;line-height:1.65}
+.devo-excerpt{font-size:15px;color:var(--ink-2);line-height:1.85;margin-bottom:28px;max-width:760px}
+.devo-footer-row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.lang-pills{display:flex;gap:8px;flex-wrap:wrap}
+.lang-pill{font-size:10px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;background:var(--surf);border:0.5px solid var(--rule);border-radius:3px;padding:5px 10px;color:var(--ink-3)}
+
+/* CAMPAIGNS */
+.campaigns{background:var(--surf);padding:0 48px 64px;border-top:0.5px solid var(--rule)}
+.campaigns-inner{max-width:1200px;margin:0 auto}
+.campaigns-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;margin-top:32px}
+.camp-card{background:var(--white);border:0.5px solid var(--rule);border-radius:8px;overflow:hidden;transition:transform .2s, box-shadow .2s}
+.camp-card:hover{transform:translateY(-3px);box-shadow:0 16px 32px -12px rgba(17,18,16,0.1)}
+.camp-card-top{height:5px}
+.camp-body{padding:26px 22px}
+.camp-icon{font-size:28px;color:var(--gold);margin-bottom:16px;display:block}
+.camp-h{font-family:'DM Serif Display',serif;font-size:19px;color:var(--ink);margin-bottom:10px;line-height:1.3}
+.camp-p{font-size:13px;color:var(--ink-3);line-height:1.65;margin-bottom:18px;min-height:62px}
+.camp-link{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink);text-decoration:none;display:inline-flex;align-items:center;gap:6px;border-bottom:1px solid var(--gold);padding-bottom:2px}
+
+/* OUTREACH */
+.outreach{padding:0 48px 64px;border-top:0.5px solid var(--rule)}
+.outreach-inner{max-width:1200px;margin:0 auto}
+.outreach-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;margin-top:32px;align-items:start}
+.outreach-desc{font-size:15px;color:var(--ink-3);line-height:1.8;margin-bottom:32px;max-width:440px}
+.reach-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.reach-stat{background:var(--surf);border:0.5px solid var(--rule);border-radius:6px;padding:22px 20px}
+.reach-stat-n{font-family:'DM Serif Display',serif;font-size:30px;color:var(--ink);display:block}
+.reach-stat-l{font-size:11px;color:var(--ink-3);letter-spacing:0.1em;text-transform:uppercase;display:block;margin-top:6px}
+.outreach-list{display:flex;flex-direction:column;gap:1px;border:0.5px solid var(--rule);border-radius:8px;overflow:hidden}
+.outreach-item{background:var(--white);padding:20px 24px;display:flex;gap:16px;align-items:flex-start;border-bottom:0.5px solid var(--rule)}
+.outreach-item:last-child{border-bottom:none}
+.out-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;margin-top:7px;flex-shrink:0}
+.out-name{font-size:15px;font-weight:500;color:var(--ink);margin-bottom:3px}
+.out-tag{font-size:12px;color:var(--ink-3)}
+
+/* TESTIMONY */
+.testimony{background:var(--surf);border-top:0.5px solid var(--rule);border-bottom:0.5px solid var(--rule);padding:64px 48px}
+.testimony-inner{display:grid;grid-template-columns:1fr auto;gap:48px;align-items:start;max-width:1200px;margin:0 auto}
+.quote-mark{font-family:'DM Serif Display',serif;font-size:96px;color:var(--gold-border);line-height:0.6;display:block;margin-bottom:16px}
+.quote-text{font-family:'DM Serif Display',serif;font-size:28px;font-style:italic;color:var(--ink);line-height:1.55;margin-bottom:20px;max-width:680px}
+.quote-attr{font-size:13px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-3)}
+.testimony-cta{text-align:right;flex-shrink:0;width:220px}
+.testimony-cta p{font-size:14px;color:var(--ink-3);line-height:1.65;margin-bottom:18px}
+.btn-outlined-gold{border:1px solid var(--gold);color:var(--gold);font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:13px 22px;border-radius:3px;text-decoration:none;display:inline-block;transition:background .2s}
+.btn-outlined-gold:hover{background:var(--gold-pale)}
+
+/* APP CTA */
+.app-cta{padding:72px 48px;display:grid;grid-template-columns:1fr auto;gap:64px;align-items:center;max-width:1200px;margin:0 auto}
+.app-cta-left .section-h2{margin-bottom:18px}
+.app-cta-left p{font-size:15px;color:var(--ink-3);line-height:1.8;margin-bottom:32px;max-width:480px}
+.app-badges{display:flex;gap:14px;flex-wrap:wrap}
+.app-badge{background:var(--ink);color:var(--white);font-size:13px;font-weight:500;padding:14px 22px;border-radius:5px;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:opacity .2s}
+.app-badge:hover{opacity:0.85}
+.app-badge-ghost{border:0.5px solid var(--rule);color:var(--ink);font-size:13px;font-weight:500;padding:14px 22px;border-radius:5px;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:background .2s}
+.app-badge-ghost:hover{background:var(--surf)}
+.app-phone{width:200px;background:var(--surf);border:0.5px solid var(--rule);border-radius:22px;overflow:hidden;align-self:center}
+.phone-top{background:var(--gold-pale);border-bottom:0.5px solid var(--gold-border);padding:18px 20px}
+.phone-top-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.phone-dots{display:flex;gap:5px}
+.phone-dot{width:7px;height:7px;border-radius:50%;background:var(--gold-border)}
+.phone-h{font-family:'DM Serif Display',serif;font-size:18px;color:var(--ink);line-height:1.3}
+.phone-body{padding:18px 20px 22px}
+.phone-line{height:9px;background:var(--rule);border-radius:3px;margin-bottom:9px}
+.phone-line.short{width:60%}
+.phone-gold-line{height:9px;background:var(--gold-pale);border:0.5px solid var(--gold-border);border-radius:3px;margin-bottom:9px}
+.phone-btn{background:var(--ink);color:var(--white);font-size:11px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;padding:9px 14px;border-radius:4px;display:inline-block;margin-top:10px}
+
+/* FOOTER */
+.footer{background:var(--ink);padding:72px 48px 32px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:64px;margin-bottom:56px}
+.footer-logo{font-family:'DM Serif Display',serif;font-size:24px;color:var(--white);margin-bottom:14px}
+.footer-tagline{font-size:14px;color:rgba(255,255,255,0.4);line-height:1.75;margin-bottom:26px;max-width:380px}
+.social-row{display:flex;gap:10px}
+.social-btn{width:38px;height:38px;border:0.5px solid rgba(255,255,255,0.14);border-radius:4px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.5);font-size:17px;text-decoration:none;transition:background .2s,color .2s}
+.social-btn:hover{background:rgba(255,255,255,0.08);color:#fff}
+.footer-col-h{font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.38);margin-bottom:18px}
+.footer-links{list-style:none}
+.footer-links li{margin-bottom:13px}
+.footer-links a{font-size:14px;color:rgba(255,255,255,0.55);text-decoration:none}
+.footer-links a:hover{color:#fff}
+.footer-bottom{border-top:0.5px solid rgba(255,255,255,0.1);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.footer-copy{font-size:11px;color:rgba(255,255,255,0.25);letter-spacing:0.04em}
+.footer-langs{display:flex;gap:10px}
+.footer-lang-badge{font-size:10px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;border:0.5px solid rgba(255,255,255,0.14);border-radius:3px;padding:4px 10px;color:rgba(255,255,255,0.35)}
+
+@media (max-width: 900px){
+  .nav{padding:0 24px}
+  .nav-links{display:none}
+  .hero{grid-template-columns:1fr;padding:56px 24px;gap:40px}
+  .hero-h1{font-size:40px}
+  .stats-bar{grid-template-columns:repeat(2,1fr)}
+  .section-divider,.devo-section,.campaigns,.outreach,.testimony,.app-cta,.footer{padding-left:24px;padding-right:24px}
+  .devo-inner{padding:28px 24px}
+  .campaigns-grid{grid-template-columns:repeat(2,1fr)}
+  .outreach-grid{grid-template-columns:1fr;gap:32px}
+  .testimony-inner{grid-template-columns:1fr}
+  .testimony-cta{text-align:left;width:100%}
+  .app-cta{grid-template-columns:1fr;text-align:center}
+  .app-cta-left p{margin-left:auto;margin-right:auto}
+  .app-phone{margin:0 auto}
+  .footer-top{grid-template-columns:1fr;gap:36px}
+}
+</style>
+</head>
+<body>
+
+<div class="site">
+
+<nav class="nav">
+  <div class="nav-logo">
+    Rhapsody of Realities
+    <small>The messenger angel</small>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#">Devotional</a></li>
+    <li><a href="#">Campaigns</a></li>
+    <li><a href="#">Networks</a></li>
+    <li><a href="#">Give</a></li>
+    <li><a href="#">About</a></li>
+  </ul>
+  <a href="#" class="nav-pill">Read today</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Daily devotional · June 2026</div>
+    <h1 class="hero-h1">God's word for you,<br><em>every single day.</em></h1>
+    <p class="hero-body">The world's most-read daily devotional — a love note from your heavenly Father, reaching billions across 8,123 languages and every nation on earth.</p>
+    <div class="hero-actions">
+      <a href="#" class="btn-dark"><i class="ti ti-book-open" aria-hidden="true"></i> Read today's devotional</a>
+      <a href="#" class="btn-ghost"><i class="ti ti-download" aria-hidden="true"></i> Get the app</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="devo-preview">
+      <div class="devo-preview-top">
+        <span class="devo-tag">Today's word</span>
+        <span class="devo-date-badge">Tue, Jun 17</span>
+      </div>
+      <div class="devo-body">
+        <div class="devo-title-sm">Walking in the light of his word</div>
+        <div class="devo-verse-sm">"Thy word is a lamp unto my feet, and a light unto my path." — Psalm 119:105</div>
+        <p class="devo-text-sm">The Word of God is not merely a book — it is the living voice of your heavenly Father, speaking directly into every situation you face today…</p>
+        <a href="#" class="devo-read">Continue reading <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats-bar">
+  <div class="stat-cell"><span class="stat-n">8,123+</span><span class="stat-l">Languages</span></div>
+  <div class="stat-cell"><span class="stat-n">7B+</span><span class="stat-l">Mandate reach</span></div>
+  <div class="stat-cell"><span class="stat-n">190+</span><span class="stat-l">Nations</span></div>
+  <div class="stat-cell"><span class="stat-n">30+</span><span class="stat-l">Years of impact</span></div>
+</div>
+
+<div class="section-divider"><div class="div-line"></div><span class="div-label">Today's devotional</span><div class="div-line"></div></div>
+<section class="devo-section">
+  <div class="devo-section-header">
+    <h2 class="section-h2">Open your heart to today's message</h2>
+    <a href="#" class="see-all">Archive <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
+  </div>
+  <div class="devo-card-full">
+    <div class="devo-spine"></div>
+    <div class="devo-inner">
+      <div class="devo-meta">Tuesday, 17 June 2026 · Psalm 119:105</div>
+      <div class="devo-h">Walking in the light of his word</div>
+      <div class="devo-scripture">"Thy word is a lamp unto my feet, and a light unto my path." — Psalm 119:105</div>
+      <p class="devo-excerpt">The Word of God is not merely a book; it is the living voice of your heavenly Father, speaking into every situation you face today. As you open its pages, you are stepping into a realm where impossibilities dissolve and faith comes alive — where the language of heaven meets the realities of your daily life. Make a decision today to let the Word dwell richly in you, becoming the lens through which you interpret every experience.</p>
+      <div class="devo-footer-row">
+        <a href="#" class="devo-read">Read in full <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
+        <div class="lang-pills">
+          <span class="lang-pill">EN</span>
+          <span class="lang-pill">FR</span>
+          <span class="lang-pill">PT</span>
+          <span class="lang-pill">YO</span>
+          <span class="lang-pill">IG</span>
+          <span class="lang-pill">+8,118</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"><div class="div-line"></div><span class="div-label">Campaigns &amp; initiatives</span><div class="div-line"></div></div>
+<section class="campaigns">
+  <div class="campaigns-inner">
+    <div class="devo-section-header" style="margin-top:32px">
+      <h2 class="section-h2">Be part of something eternal</h2>
+      <a href="#" class="see-all">All campaigns <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
+    </div>
+    <div class="campaigns-grid">
+      <div class="camp-card">
+        <div class="camp-card-top" style="background:var(--gold)"></div>
+        <div class="camp-body">
+          <i class="ti ti-world camp-icon" aria-hidden="true"></i>
+          <div class="camp-h">Sponsor 8,123 languages</div>
+          <p class="camp-p">Make God's Word available in the language someone's heart best understands — reach one more soul today.</p>
+          <a href="#" class="camp-link">Sponsor now <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <div class="camp-card">
+        <div class="camp-card-top" style="background:var(--green)"></div>
+        <div class="camp-body">
+          <i class="ti ti-device-watch camp-icon" aria-hidden="true" style="color:var(--green)"></i>
+          <div class="camp-h">Tap2Read bracelets</div>
+          <p class="camp-p">NFC and QR-enabled Christian bracelets for instant Rhapsody sharing — faith on your wrist, always ready.</p>
+          <a href="#" class="camp-link">Order now <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <div class="camp-card">
+        <div class="camp-card-top" style="background:#5B7FA6"></div>
+        <div class="camp-body">
+          <i class="ti ti-mood-smile camp-icon" aria-hidden="true" style="color:#5B7FA6"></i>
+          <div class="camp-h">Say yes to the kids</div>
+          <p class="camp-p">Reach children with Kiddies Rhapsody — planting the living Word from their earliest years for a lifetime of faith.</p>
+          <a href="#" class="camp-link">Sign up <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <div class="camp-card">
+        <div class="camp-card-top" style="background:#8B6AA6"></div>
+        <div class="camp-body">
+          <i class="ti ti-users camp-icon" aria-hidden="true" style="color:#8B6AA6"></i>
+          <div class="camp-h">Youths aglow</div>
+          <p class="camp-p">Engaging billions of young people across campuses, cities, and communities — igniting a generation with purpose.</p>
+          <a href="#" class="camp-link">Join the movement <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"><div class="div-line"></div><span class="div-label">Global outreach</span><div class="div-line"></div></div>
+<section class="outreach">
+  <div class="outreach-inner">
+    <div class="devo-section-header" style="margin-top:32px">
+      <h2 class="section-h2">Taking the Gospel to every corner of the earth</h2>
+    </div>
+    <div class="outreach-grid">
+      <div class="outreach-left">
+        <p class="outreach-desc">From the largest Gospel festivals on earth to mission trips reaching the forgotten — Rhapsody is closing every gap, leaving no one without the Word of God.</p>
+        <div class="reach-stats">
+          <div class="reach-stat"><span class="reach-stat-n">190+</span><span class="reach-stat-l">Nations</span></div>
+          <div class="reach-stat"><span class="reach-stat-n">4,000+</span><span class="reach-stat-l">Dialects</span></div>
+          <div class="reach-stat"><span class="reach-stat-n">7B+</span><span class="reach-stat-l">Mandate</span></div>
+          <div class="reach-stat"><span class="reach-stat-n">Free</span><span class="reach-stat-l">For the needy</span></div>
+        </div>
+      </div>
+      <div class="outreach-right">
+        <div class="outreach-list">
+          <div class="outreach-item">
+            <div class="out-dot"></div>
+            <div><div class="out-name">ReachOut World</div><div class="out-tag">Mass distribution campaigns · Global</div></div>
+          </div>
+          <div class="outreach-item">
+            <div class="out-dot"></div>
+            <div><div class="out-name">Mission trips</div><div class="out-tag">Free copies to needy communities</div></div>
+          </div>
+          <div class="outreach-item">
+            <div class="out-dot"></div>
+            <div><div class="out-name">End-time global crusades</div><div class="out-tag">Live and streamed · Worldwide</div></div>
+          </div>
+          <div class="outreach-item">
+            <div class="out-dot"></div>
+            <div><div class="out-name">No one left behind</div><div class="out-tag">Braille, audio &amp; sign language editions</div></div>
+          </div>
+          <div class="outreach-item">
+            <div class="out-dot"></div>
+            <div><div class="out-name">Prison outreaches</div><div class="out-tag">Taking the Word behind closed doors</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"><div class="div-line"></div><span class="div-label">Testimonies</span><div class="div-line"></div></div>
+<section class="testimony" style="margin-top:32px">
+  <div class="testimony-inner">
+    <div>
+      <span class="quote-mark">"</span>
+      <p class="quote-text">Reading Rhapsody every morning transformed my prayer life completely. The Word came alive in ways I had never imagined possible — I started seeing real answers to prayers I'd carried for years.</p>
+      <div class="quote-attr">— Chinyere A., Lagos · Nigeria</div>
+    </div>
+    <div class="testimony-cta">
+      <p>Has Rhapsody changed your life? Share your story with the world.</p>
+      <a href="#" class="btn-outlined-gold">Share testimony</a>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"><div class="div-line"></div><span class="div-label">Get the app</span><div class="div-line"></div></div>
+<section class="app-cta">
+  <div class="app-cta-left">
+    <h2 class="section-h2">Your daily word, right in your pocket</h2>
+    <p>Read, listen, and share Rhapsody of Realities from anywhere. Available offline, in 8,123 languages, with daily reminders so you never miss God's word for the day.</p>
+    <div class="app-badges">
+      <a href="#" class="app-badge"><i class="ti ti-brand-apple" aria-hidden="true" style="font-size:18px"></i> App Store</a>
+      <a href="#" class="app-badge-ghost"><i class="ti ti-brand-google-play" aria-hidden="true" style="font-size:18px"></i> Google Play</a>
+    </div>
+  </div>
+  <div class="app-phone">
+    <div class="phone-top">
+      <div class="phone-top-bar">
+        <div class="phone-dots"><div class="phone-dot"></div><div class="phone-dot"></div><div class="phone-dot"></div></div>
+        <i class="ti ti-bell" aria-hidden="true" style="font-size:14px;color:var(--ink-3)"></i>
+      </div>
+      <div class="phone-h">Rhapsody<br>of Realities</div>
+    </div>
+    <div class="phone-body">
+      <div class="phone-gold-line"></div>
+      <div class="phone-line"></div>
+      <div class="phone-line"></div>
+      <div class="phone-line short"></div>
+      <div class="phone-line"></div>
+      <div class="phone-line short"></div>
+      <div class="phone-btn">Read now</div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">Rhapsody of Realities</div>
+        <p class="footer-tagline">A love note from God to you — the world's most-read daily devotional, in every language, for every soul.</p>
+        <div class="social-row">
+          <a href="#" class="social-btn" aria-label="KingsChat"><i class="ti ti-message-circle" aria-hidden="true"></i></a>
+          <a href="#" class="social-btn" aria-label="X"><i class="ti ti-brand-x" aria-hidden="true"></i></a>
+          <a href="#" class="social-btn" aria-label="Facebook"><i class="ti ti-brand-facebook" aria-hidden="true"></i></a>
+          <a href="#" class="social-btn" aria-label="YouTube"><i class="ti ti-brand-youtube" aria-hidden="true"></i></a>
+          <a href="#" class="social-btn" aria-label="Telegram"><i class="ti ti-brand-telegram" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-h">Navigate</div>
+        <ul class="footer-links">
+          <li><a href="#">Daily devotional</a></li>
+          <li><a href="#">About the author</a></li>
+          <li><a href="#">Networks</a></li>
+          <li><a href="#">Campaigns</a></li>
+          <li><a href="#">Outreaches</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-h">Get involved</div>
+        <ul class="footer-links">
+          <li><a href="#">Sponsor a language</a></li>
+          <li><a href="#">Prayer request</a></li>
+          <li><a href="#">Prayer of salvation</a></li>
+          <li><a href="#">Share testimony</a></li>
+          <li><a href="#">Partner with us</a></li>
+          <li><a href="#">Donate</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Rhapsody of Realities · LoveWorld Inc. All rights reserved.</span>
+      <div class="footer-langs">
+        <span class="footer-lang-badge">EN</span>
+        <span class="footer-lang-badge">FR</span>
+        <span class="footer-lang-badge">PT</span>
+        <span class="footer-lang-badge">+8,120</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</div>
+
+</body>
+</html>
